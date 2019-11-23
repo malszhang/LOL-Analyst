@@ -3,7 +3,54 @@
 	<head>
 		<meta charset="utf-8">
 		<title></title>
+		<!-- 引入各种资源 -->
+		<script src="js/bootstrap.js"></script>
+		<script type="text/javascript" src="js/echarts.min.js"></script>
+		<script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
+		<script type="text/javascript" src="js/echarts.js"></script>
+
+		<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+		<link rel="stylesheet" href="css/bootstrap.min.css">
 	</head>
-	<body>
+
+	<body style="background-color: rgb(238,239,246);">
+		<div class="col-sm-12" style="background-color: rgb(47,69,84)">
+			<ul class="nav nav-pills">
+				<h3 role="presentation" class="active" style="color:white">
+					<b>LPL Analytics</b>
+				</h3>
+			</ul>
+
+		</div>
+		<div class="col-sm-12">
+			<p>
+		</div>
+		<div class="col-md-8">
+			<div id="stackBar" style="height: 380px; width: 880px;background-color: rgb(255,255,255);">
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div id="categoryBar" style="height: 380px; width: 450px;background-color: rgb(255,255,255);">
+			</div>
+		</div>
+		<div class="col-sm-12">
+			<p>
+		</div>
+		<div class="col-md-8">
+			<div id="main" style="height: 290px; width: 880px;">
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div id="pie" style="height: 290px; width: 450px;">
+			</div>
+		</div>
+		<div class="col-sm-12">
+			<p>
+		</div>
 	</body>
+	<!-- 绘图js -->
+	<script type="text/javascript" src="js/stackBar.js"></script>
+	<script type="text/javascript" src="js/categoryBar.js"></script>
+	<script type="text/javascript" src="js/parallel.js"></script>
+	<script type="text/javascript" src="js/pie.js"></script>
 </html>
