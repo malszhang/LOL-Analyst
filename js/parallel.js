@@ -1,4 +1,4 @@
-var myChart = echarts.init(document.getElementById('main'));
+var myChart = echarts.init(document.getElementById('parallel'));
 var data1 = 2;
 var parallel = {
 	data: [
