@@ -1,0 +1,34 @@
+{
+	"name": [["ADD", "Meteor", "Kuro", "Jinjiao", "XinMo"], ["Jinoo", "Jiejie", "Scout", "iBoy", "Meiko"]] ,
+	"data": [{
+		"name": "ADD",
+		"value": [59, 2.4, 5.1, 3, 7.5, 0.5]
+	}, {
+		"name": "Meteor",
+		"value": [73.7, 3.1, 6.2, 2.3, 5.5, 0.7]
+	}, {
+		"name": "Kuro",
+		"value": [66.6, 2.9, 5.5, 2, 8.3, 0.5]
+	}, {
+		"name": "Jinjiao",
+		"value": [66.1, 3.6, 4.8, 2, 9.7, 0.3]
+	}, {
+		"name": "XinMo",
+		"value": [69.1, 0.6, 8.2, 2.1, 1.5, 1.4]
+	}, {
+		"name": "Jinoo",
+		"value": [58.2, 3, 4.8, 2.2, 8, 0.4]
+	}, {
+		"name": "Jiejie",
+		"value": [68.8, 2.1, 7.2, 2.3, 4.7, 0.8]
+	}, {
+		"name": "Scout",
+		"value": [65.1, 3.7, 5.1, 2, 8.4, 0.4]
+	}, {
+		"name": "iBoy",
+		"value": [67.5, 3.9, 5.3, 1.7, 9.6, 0.3]
+	}, {
+		"name": "Meiko",
+		"value": [74.8, 0.8, 9.3, 2.2, 1.3, 1.3]
+	}]
+}
