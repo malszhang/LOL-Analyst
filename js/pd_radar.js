@@ -30,7 +30,7 @@ $.get("data/player/BLG VS EDG 1.json", function(d) {
 	var radarData = d.data;
 	var option = {
 		title: {
-			text: '选手数据雷达图'
+			text: '选手主要指标雷达图'
 		},
 		tooltip: {},
 		legend: [{

@@ -20,34 +20,42 @@ function transMinus(data){
 	}
 	return minusData;
 }
+	
+function startX(data){
+	alert(data);
+}
 $.get("data/team/teamdata.json", function(d) {
-
 	var teamName = ["EDG", "BLG"];
 	var option = {
 		color:['#4cabce', '#e5323e'],
-		title: {
-			text: '队伍数据柱状及指标比例图',
+		title: [{
+			text: '队伍胜率对比图',
 			top:"top",
 			left:"center"
-		},
+		},{
+			text: '队伍主要指标对比图',
+			top:"48%",
+			left:"center"
+		}],
 	    legend: {
 	        data: teamName,
-			top: "10%",
-			left:"15%"
+			top: "57%",
+			left:"center"
 	    },
 	    tooltip: {},
 		grid:{
-			left: "10%",
-			right: "50%",
+			left: "5%",
+			right: "5%",
+			top: "65%",
 			bottom:"10%"
 		},
-	    yAxis: {
+	    xAxis: {
 	        data: teamItem,
 	        axisLine: {onZero: true},
 	        splitLine: {show: false},
 	        splitArea: {show: false}
 	    },
-	    xAxis: {
+	    yAxis: {
 			show:false,
 			inverse: true,
 	        splitArea: {show: false}
@@ -69,7 +77,7 @@ $.get("data/team/teamdata.json", function(d) {
 	        },{
 				type: 'pie',
 				radius: [0, '35%'],
-				center: ['75%', '50%'],
+				center: ['50%', '27%'],
 				data:[
 					{name:"223",value:52},
 					{name:"224",value:48}],

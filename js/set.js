@@ -1,9 +1,13 @@
+$.get("data/competition.json", function(d) {
+	var comName = [];
+	for (var i = 0; i < d.length; i++){
+		comName.push(d[i].name);
+	}
+	setChoose(comName);
+});
 setWindow();
-setChoose(["1", "2", "3"]);
 //选择比赛
-$(".copm").click(function(d){
-	console.log(d.currentTarget.id)
-})
+
 /**
  * 设置窗口大小
  */
@@ -17,10 +21,13 @@ function setWindow() {
  * @param {Object} data
  */
 function setChoose(data) {
-	let copData = data;
-	for (let d in copData){
-		let html = "<li class="+"copm"+" id=copm-"+d+"><a>"+d+"</a></li>";
+	for (var i = 0; i < data.length; i++){
+		let html = "<li class=\"copm\" id=\""+data[i]+"\"><a>"+data[i]+"</a></li>";
 		$("#copMenu").append(html);
+		console.log(html)
 	}
+	$(".copm").click(function(d){
+		startX(d.currentTarget.id)
+	})
 }
 
