@@ -57,23 +57,23 @@ $.get("data/team/teamdata.json", function(d) {
 	    },
 	    yAxis: {
 			show:false,
-			inverse: true,
+			//inverse: true,
 	        splitArea: {show: false}
 	    },
 	    series: [
 	        {
 	            name: teamName[0],
 	            type: 'bar',
-				stack:'one',
+				//stack:'one',
 	            emphasis: emphasisStyle,
 	            data: d[0].data
 	        },
 	        {
 	            name: teamName[1],
 	            type: 'bar',
-				stack:'one',
+				//stack:'one',
 	            emphasis: emphasisStyle,
-	            data: transMinus(d[1].data)
+	            data: d[1].data
 	        },{
 				type: 'pie',
 				radius: [0, '35%'],
