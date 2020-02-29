@@ -29,14 +29,16 @@ $.get("data/player/playerHeat.json", function(data) {
 			 }
 		},
 	    xAxis: {
-	        type: 'category',
+	        type: 'value',
 	        data: xData,
-			// show : false
+			// inverse: true,
+			show : false
 	    },
 	    yAxis: {
-	        type: 'category',
+	        type: 'value',
 	        data: yData,
-			// show: false
+			// inverse: true,
+			show: false
 	    },
 	    visualMap: {
 			type: 'continuous',
@@ -44,21 +46,17 @@ $.get("data/player/playerHeat.json", function(data) {
 	        max: 1,
 	        calculable: true,
 	        realtime: false,
-			// orient: 'horizontal',
-			// left: 'center',
-			// bottom: '15%',
+			dimension: 2,
+			inRange: {
+			            color: 'red',
+						colorAlpha: [0.4, 1]
+			        } ,
 			show: false
 	    },
 	    series: [{
 	        name: 'Gaussian',
 	        type: 'heatmap',
 	        data: showData,
-			pointSize: 100,
-	        emphasis: {
-	            itemStyle: {
-					color : "red"
-	            }
-	        }
 	    }]
 	};
 	
