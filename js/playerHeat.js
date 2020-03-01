@@ -1,6 +1,11 @@
 var playerHeat = document.getElementById("playerHeat")
 var heatChar = echarts.init(playerHeat);
+
 $.get("data/player/playerHeat.json", function(data) {
+	drawPlayerHeat(data);
+});
+function dealData(data){
+	var dealData = {};
 	let xData = data.data.map(function(d) {
 		return parseFloat(d.axis_x);
 	});
@@ -21,23 +26,24 @@ $.get("data/player/playerHeat.json", function(data) {
 	let showData = data.data.map(function(d) {
 		return [parseFloat(d.axis_x), parseFloat(d.axis_y),parseFloat(d.hot_value)]
 	});
-	console.log(showData);
+	dealData.xData = xData;
+	dealData.yData = yData;
+	dealData.showData = showData;
+	return dealData; 
+}
+
+function drawPlayerHeat(data){
+	let dealdata = dealData(data);
 	let option = {
-	    tooltip: {
-			 formatter:function(parm){
-				 console.log(parm);
-			 }
-		},
+	    tooltip: {},
 	    xAxis: {
 	        type: 'value',
-	        data: xData,
-			// inverse: true,
+	        data: dealdata.xData,
 			show : false
 	    },
 	    yAxis: {
 	        type: 'value',
-	        data: yData,
-			// inverse: true,
+	        data: dealdata.yData,
 			show: false
 	    },
 	    visualMap: {
@@ -56,9 +62,10 @@ $.get("data/player/playerHeat.json", function(data) {
 	    series: [{
 	        name: 'Gaussian',
 	        type: 'heatmap',
-	        data: showData,
+	        data: dealdata.showData,
 	    }]
 	};
 	
 	heatChar.setOption(option);
-});
+}
+
