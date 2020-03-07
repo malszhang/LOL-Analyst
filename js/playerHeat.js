@@ -4,8 +4,8 @@ var heatChar = echarts.init(playerHeat);
 $.get("data/player/playerHeat.json", function(data) {
 	drawPlayerHeat(data);
 });
-function dealData(data){
-	var dealData = {};
+function dealHeatData(data){
+	let dealData = {};
 	let xData = data.data.map(function(d) {
 		return parseFloat(d.axis_x);
 	});
@@ -21,7 +21,7 @@ function dealData(data){
 	let heatNum = data.data.map(function(d) {
 		return parseFloat(d.hot_value);
 	});
-	let hotMax = Math.max.apply(Math,heatNum);
+	// let hotMax = Math.max.apply(Math,heatNum);
 	
 	let showData = data.data.map(function(d) {
 		return [parseFloat(d.axis_x), parseFloat(d.axis_y),parseFloat(d.hot_value)]
@@ -29,40 +29,46 @@ function dealData(data){
 	dealData.xData = xData;
 	dealData.yData = yData;
 	dealData.showData = showData;
+	dealData.heatNum = heatNum;
 	return dealData; 
 }
 
 function drawPlayerHeat(data){
-	let dealdata = dealData(data);
+	let dealData = dealHeatData(data);
+	let minNum = Math.min.apply(Math,dealData.heatNum);
+	let maxNum = Math.max.apply(Math,dealData.heatNum);
 	let option = {
 	    tooltip: {},
 	    xAxis: {
 	        type: 'value',
-	        data: dealdata.xData,
+	        data: dealData.xData,
 			show : false
 	    },
 	    yAxis: {
 	        type: 'value',
-	        data: dealdata.yData,
+	        data: dealData.yData,
 			show: false
 	    },
 	    visualMap: {
 			type: 'continuous',
-	        min: 0,
-	        max: 1,
+	        min: minNum,
+	        max: maxNum,
 	        calculable: true,
 	        realtime: false,
 			dimension: 2,
 			inRange: {
-			            color: 'red',
-						colorAlpha: [0.4, 1]
+						color: 'red',
+						colorAlpha: [0.4, 1],
 			        } ,
 			show: false
 	    },
 	    series: [{
 	        name: 'Gaussian',
 	        type: 'heatmap',
-	        data: dealdata.showData,
+	        data: dealData.showData,
+			emphasis:{
+				shadowColor: 'yellow'
+			}
 	    }]
 	};
 	
