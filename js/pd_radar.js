@@ -30,6 +30,8 @@ function drawPdRadar(compName){
 		var playerName = d.name;
 		var radarData = d.data;
 		var option = {
+			color:["#E9B9A7", "#E99E9A", "#A9272C", "#DCB1B8", "#E3A3C0",
+				"#AEADCD", "#A5C0D0", "#ADCAC8", "#B5D4C2", "#71B3B8"],
 			title: {
 				text: '选手主要指标雷达图'
 			},
@@ -65,14 +67,15 @@ function drawPdRadar(compName){
 				type: 'radar',
 				emphasis: {
 					areaStyle: {
-						color: 'rgba(0,250,0,0.3)'
+						// color: 'rgba(0,250,0,0.3)'
 					}
 				},
 				// areaStyle: {normal: {}},
 				data: radarData
 			}]
 		};
-		radarChart.setOption(option)
+		radarChart.clear();
+		radarChart.setOption(option);
 	});
 	
 }

@@ -6,6 +6,7 @@ var maxDamage = 5000;
 function groupBarDraw(compName, dataIndex) {
 	$.get("data/comp/" + compName + ".json", function(d) {
 		option = {
+			color:['#e5323e', '#4cabce'],
 			tooltip: {
 				trigger: 'axis',
 				axisPointer: {
@@ -72,7 +73,8 @@ function groupBarDraw(compName, dataIndex) {
 				},
 			]
 		};
-		groupBarChart.setOption(option)
+		groupBarChart.clear();
+		groupBarChart.setOption(option);
 	});
 
 }

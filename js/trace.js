@@ -1,10 +1,9 @@
-var traceDom = document.getElementById("traceFlow");
-var traceChart = echarts.init(traceDom);
+
 var colors = ["#E9B9A7", "#E99E9A", "#A9272C", "#DCB1B8", "#E3A3C0",
 	"#AEADCD", "#A5C0D0", "#ADCAC8", "#B5D4C2", "#71B3B8"
 ];
-
-
+var traceDom = document.getElementById("traceFlow");
+var traceChart = echarts.init(traceDom);
 function traceDraw(compName) {
 	//var minAbs = Math.abs(Math.min.apply(Math, data[2]));
 	//var maxAbs = Math.abs(Math.max.apply(Math, data[2]));
@@ -92,7 +91,6 @@ function traceDraw(compName) {
 				data: data[2]
 			}]
 		};
-		
 		for (var i = 0; i < 10; i++) {
 			option.series.push({
 				name: data[1][i],
@@ -121,7 +119,8 @@ function traceDraw(compName) {
 				},
 			});
 		}
-		traceChart.setOption(option)
+		traceChart.clear();
+		traceChart.setOption(option);
 	});
 	
 }

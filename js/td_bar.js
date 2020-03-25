@@ -87,6 +87,7 @@ function drawTdBar(teamNames){
 				}
 			]
 		}
-		barChart.setOption(option)
+		barChart.clear();
+		barChart.setOption(option);
 	});
 }
