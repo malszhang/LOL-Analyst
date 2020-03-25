@@ -25,51 +25,54 @@ var radarItem = [{
 		"max": 2
 	}
 ]
-$.get("data/player/BLG VS EDG 1.json", function(d) {
-	var playerName = d.name;
-	var radarData = d.data;
-	var option = {
-		title: {
-			text: '选手主要指标雷达图'
-		},
-		tooltip: {},
-		legend: [{
-			data: playerName[0],
-			orient: 'vertical',
-			left: "left",
-			top: "center"
-		}, {
-			data: playerName[1],
-			orient: 'vertical',
-			right: "right",
-			top: "center"
-		}],
-		radar: {
-			// shape: 'circle',
-			name: {
-				textStyle: {
-					color: '#fff',
-					backgroundColor: '#999',
-					borderRadius: 3,
-					padding: [3, 5]
-				}
+function drawPdRadar(compName){
+	$.get("data/player/"+compName+".json", function(d) {
+		var playerName = d.name;
+		var radarData = d.data;
+		var option = {
+			title: {
+				text: '选手主要指标雷达图'
 			},
-			splitNumber: 3,
-			center: ["50%", "50%"],
-			radius: 70,
-			indicator: radarItem
-		},
-		series: [{
-			name: '预算 vs 开销（Budget vs spending）',
-			type: 'radar',
-			emphasis: {
-				areaStyle: {
-					color: 'rgba(0,250,0,0.3)'
-				}
+			tooltip: {},
+			legend: [{
+				data: playerName[0],
+				orient: 'vertical',
+				left: "left",
+				top: "center"
+			}, {
+				data: playerName[1],
+				orient: 'vertical',
+				right: "right",
+				top: "center"
+			}],
+			radar: {
+				// shape: 'circle',
+				name: {
+					textStyle: {
+						color: '#fff',
+						backgroundColor: '#999',
+						borderRadius: 3,
+						padding: [3, 5]
+					}
+				},
+				splitNumber: 3,
+				center: ["50%", "50%"],
+				radius: 70,
+				indicator: radarItem
 			},
-			// areaStyle: {normal: {}},
-			data: radarData
-		}]
-	};
-	radarChart.setOption(option)
-});
+			series: [{
+				name: compName,
+				type: 'radar',
+				emphasis: {
+					areaStyle: {
+						color: 'rgba(0,250,0,0.3)'
+					}
+				},
+				// areaStyle: {normal: {}},
+				data: radarData
+			}]
+		};
+		radarChart.setOption(option)
+	});
+	
+}
