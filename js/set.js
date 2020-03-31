@@ -75,5 +75,4 @@ function setGroup(compName) {
 		var groupName = $("#compGroup").val().split("_");
 		groupBarDraw(groupName[0], parseInt(groupName[1]));
 	});
-	
 }

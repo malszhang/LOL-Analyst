@@ -1,15 +1,36 @@
 
-var colors = ["#E9B9A7", "#E99E9A", "#A9272C", "#DCB1B8", "#E3A3C0",
-	"#AEADCD", "#A5C0D0", "#ADCAC8", "#B5D4C2", "#71B3B8"
-];
+var colors = ["#AEADCD", "#A5C0D0", "#ADCAC8", "#B5D4C2", "#71B3B8",
+				"#E9B9A7", "#E99E9A", "#A9272C", "#DCB1B8", "#E3A3C0"];
 var traceDom = document.getElementById("traceFlow");
 var traceChart = echarts.init(traceDom);
+var timeRanges = [];
+function timeTrans(compName){
+	$.get("data/comp/" + compName + ".json", function(d) {
+		var tNames = [];
+		for (var i = 0; i < d.name.length; i++) {
+			tNames.push(d.name[i])
+		}
+		timeRanges = [];
+		for (var i = 0; i < tNames.length; i++){
+			var be = tNames[i].split(" ~ ");
+			var timeRange = [];
+			for (var j = 0; j < be.length; j++){
+				var min = be[j].split(":");
+				var se = parseInt(min[0])*60+parseInt(min[1]);
+				timeRange.push(parseInt(se/5));
+			}
+			timeRanges.push(timeRange);
+		}
+	});
+}
 function traceDraw(compName) {
 	//var minAbs = Math.abs(Math.min.apply(Math, data[2]));
 	//var maxAbs = Math.abs(Math.max.apply(Math, data[2]));
 	//var limitNum = minAbs > maxAbs? minAbs: maxAbs;
 	//var limitNum = 10000;
+	timeTrans(compName)
 	$.get("data/path/" + compName + ".json", function(data) {
+		var t = timeRanges;
 		option = {
 			animation: false,
 			grid: {
@@ -92,6 +113,15 @@ function traceDraw(compName) {
 			}]
 		};
 		for (var i = 0; i < 10; i++) {
+			var len = t.length;
+			var begin, end;
+			if (len <= i){
+				begin = 0;
+				end = 0;
+			}else{
+				begin = t[i][0];
+				end = t[i][1];
+			}
 			option.series.push({
 				name: data[1][i],
 				yAxisIndex: 0,
@@ -111,9 +141,9 @@ function traceDraw(compName) {
 					},
 					data: [
 						[{
-							xAxis: '30'
+							xAxis: begin
 						}, {
-							xAxis: '70'
+							xAxis: end
 						}]
 					]
 				},
@@ -122,5 +152,4 @@ function traceDraw(compName) {
 		traceChart.clear();
 		traceChart.setOption(option);
 	});
-	
 }

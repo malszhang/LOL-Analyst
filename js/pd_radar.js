@@ -30,8 +30,8 @@ function drawPdRadar(compName){
 		var playerName = d.name;
 		var radarData = d.data;
 		var option = {
-			color:["#E9B9A7", "#E99E9A", "#A9272C", "#DCB1B8", "#E3A3C0",
-				"#AEADCD", "#A5C0D0", "#ADCAC8", "#B5D4C2", "#71B3B8"],
+			color:["#AEADCD", "#A5C0D0", "#ADCAC8", "#B5D4C2", "#71B3B8",
+				"#E9B9A7", "#E99E9A", "#A9272C", "#DCB1B8", "#E3A3C0"],
 			title: {
 				text: '选手主要指标雷达图'
 			},

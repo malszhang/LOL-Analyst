@@ -1,7 +1,7 @@
 var tdDom = document.getElementById("teamComp");
 var barChart = echarts.init(tdDom);
 var teamItem = [];
-for (var i = 0; i < 5; i++){
+for (var i = 0; i < 3; i++){
 	teamItem.push("Item"+i);
 }
 var emphasisStyle = {
@@ -29,6 +29,8 @@ function startX(data){
 }
 function drawTdBar(teamNames){
 	$.get("data/team/teamdata.json", function(d) {
+		var team1 = d[0].indexOf(teamNames[0]);
+		var team2 = d[0].indexOf(teamNames[1]);
 		var option = {
 			color:['#4cabce', '#e5323e'],
 			title: [{
@@ -69,21 +71,21 @@ function drawTdBar(teamNames){
 		            type: 'bar',
 					//stack:'one',
 		            emphasis: emphasisStyle,
-		            data: d[0].data
+		            data: d[2][team1]
 		        },
 		        {
 		            name: teamNames[1],
 		            type: 'bar',
 					//stack:'one',
 		            emphasis: emphasisStyle,
-		            data: d[1].data
+		            data: d[2][team2]
 		        },{
 					type: 'pie',
 					radius: [0, '35%'],
 					center: ['50%', '27%'],
 					data:[
-						{name:"223",value:52},
-						{name:"224",value:48}],
+						{name:teamNames[0],value:d[1][team1]},
+						{name:teamNames[1],value:d[1][team2]}],
 				}
 			]
 		}
