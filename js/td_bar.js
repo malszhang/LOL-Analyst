@@ -1,9 +1,6 @@
 var tdDom = document.getElementById("teamComp");
 var barChart = echarts.init(tdDom);
-var teamItem = [];
-for (var i = 0; i < 3; i++){
-	teamItem.push("Item"+i);
-}
+var teamItem = ['进攻能力', '运营能力', '操作能力'];
 var emphasisStyle = {
     itemStyle: {
         barBorderWidth: 1,
